@@ -5,9 +5,35 @@
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vite App</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
+    <div id="app">
+      {{num}}
+      <button type="button" v-on:click="clickMe">點我</button>
+    </div>
+    123
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    <script>
+      console.log(Vue);
+      const {createApp,ref}=Vue;
+      const app=createApp({
+        setup(){
+          const num=ref(2);
+          
+
+
+          function clickMe(){
+            num.value++
+          }
+
+          return{clickMe,num};
+
+        }
+
+      });
+      app.mount('#app');
+    </script>
   </body>
 </html>
